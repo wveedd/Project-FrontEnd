@@ -1,0 +1,116 @@
+/* src/pages/AboutUs/AboutUs.css */
+.about-us-page {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align to top vertically */
+    min-height: 100vh;
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 40px;
+    font-family: sans-serif;
+  }
+  
+  .about-us-container {
+    max-width: 900px; /* Adjust as needed */
+    width: 95%; /* Make it responsive */
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  .Home a {
+    color:rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 500;
+  
+  }
+  
+  .Home a:hover {
+    text-decoration: underline;
+  }
+   .Home
+   {
+    /* transform: translate(-50%,-50%); */
+    position: absolute;
+    bottom: 0;
+    padding-left:500px ;
+    padding-bottom: 100px;
+    
+   }
+  
+  .about-us-page h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .about-us-page p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .about-us-page h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .about-us-page ul {
+    list-style-type: disc; /* Use bullet points */
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-page li {
+    margin-bottom: 10px;
+  }
+  
+  .technologies {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 40px; /* Space between technology sections */
+    justify-content: space-around;
+  }
+  
+  .frontend-technologies,
+  .backend-technologies,
+  .database-technologies,
+  .payment-technologies {
+    flex: 1 1 200px; /* Adjust minimum width as needed */
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .frontend-technologies:hover,
+  .backend-technologies:hover,
+  .database-technologies:hover,
+  .payment-technologies:hover {
+    transform: translateY(-5px);
+  }
+  
+  .technologies h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  
+  .technologies ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .technologies li {
+    margin-bottom: 5px;
+  }
+  
+  .technologies p {
+    margin-bottom: 0; /* Remove default paragraph margin */
+  }

@@ -1,0 +1,42 @@
+/* src/components/Navbar.css */
+/* .navbar {
+  } */
+  h3{
+    margin-left:80px ;
+  }
+  .navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    
+    align-items: center; /* Center the links */
+  }
+  
+  .navbar li {
+    margin: 0 15px; /* Add space between list items */
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #020202; /* White link color */
+    font-weight: bold; /* Make links bold */
+    padding: 8px 16px; /* Add padding around link text */
+    border-radius: 5px; /* Rounded corners for links */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  }
+  
+  .navbar a:hover {
+    background-color: #1E2952; /* Slightly darker background on hover */
+    color: #ddd; /* Slightly lighter color on hover */
+  }
+  
+  .navbar a.active { /* Style for the active link */
+    background-color: #007bff; /* Blue background for active link */
+    color: #fff;
+  }
+
+  .active {
+    font-weight: bold; /* Example active link style */
+    text-decoration: underline; /* Example active link style */
+  }

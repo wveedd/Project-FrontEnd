@@ -1,0 +1,110 @@
+/* // src/pages/Registration/Registration.css */
+.registration-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* background-color: #f8f9fa; */
+  height: 100%;
+  padding: 40px;
+  margin: 20px;
+
+ /* background-image: url('https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bG9naW4lMjBwYWdlJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D');
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: c;
+  */color: #000000;
+  background-image: radial-gradient( circle 369px at -2.9% 12.9%,  rgba(247,234,163,1) 0%, rgba(236,180,238,0.56) 46.4%, rgba(163,203,247,1) 100.7% );
+
+}
+
+.registration-form {
+  /* mix-blend-mode: difference; */
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+  color: #000000;
+
+  /* background-color: #fff; */
+  border-radius: 10px;
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); */
+  
+}
+
+.registration-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #000000;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.form-group input {
+  width: calc(100% - 18px);
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-group input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.registration-form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.registration-form button:hover {
+  background-color: #0056b3;
+}
+
+.login-link {
+  margin-top: 20px;
+  text-align: center;
+  color: #3a3a3a;
+}
+
+.login-link a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.success-message {
+  color: green;
+  margin-top: 10px;
+  text-align: center;
+}

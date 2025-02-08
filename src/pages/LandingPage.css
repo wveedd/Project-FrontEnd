@@ -1,0 +1,157 @@
+/* src/pages/LandingPage/LandingPage.css */
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll if needed */
+    
+  }
+  
+  .hero {
+    /* background-color: #f0f0f0; */
+    padding: 150px 0;
+    text-align: center;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: end;
+    
+  }
+  
+
+  .hero-content {
+    max-width: 900px; /* Adjust as needed */
+    margin: 0 auto;
+    
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #0056b3;
+  }
+  
+  .hero p {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    color: #555;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* How it works, Benefits, Testimonials */
+  .how-it-works,
+  .benefits,
+  .testimonials {
+    padding: 120px 0;
+    text-align: center;
+  }
+  
+  .how-it-works h2,
+  .benefits h2,
+  .testimonials h2 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 60px;
+    color: #333;
+  }
+  
+  .step-list,
+  .benefit-list,
+  .testimonial-list {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+  }
+  
+  .step,
+  .benefit,
+  .testimonial {
+    width: 380px;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+  }
+  
+  .step i {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    color: #007bff;
+  }
+  
+  .step h3,
+  .benefit h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .step p,
+  .benefit p {
+    line-height: 1.7;
+    color: #555;
+  }
+  
+  .testimonial p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial-author {
+    font-style: italic;
+    color: #777;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 1rem;
+  }
+  
+  /* Button Styles (consistent across sections) */
+  .hero button,
+  .cta button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .hero button:hover,
+  .cta button:hover {
+    background-color: #0056b3;
+  }
+  
+  .learn-more {
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+    padding: 13px 28px;
+  }
+  
+  .learn-more:hover {
+    background-color: #e9ecef;
+    color: #0056b3;
+  }

@@ -6,6 +6,7 @@ import AboutUs from './pages/AboutUs';
 import Registration from './pages/Registration';
 import './index.css';
 import Login from './pages/Login'; // 
+import Verify from './pages/Verify';
 // Import your CSS if you have it
 
 
@@ -22,6 +23,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    // <Verify />
   );
 }
 

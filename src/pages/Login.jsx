@@ -1,5 +1,5 @@
 // src/pages/Login/Login.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Snackbar } from '@mui/material';
 import axios from 'axios';
@@ -85,7 +85,7 @@ function Login() {
           {errorMessage && <Typography color="error" className="error-message">{errorMessage}</Typography>}
 <br /><br />
           <Typography className="register-link">
-            Don't have an account? <Link to="/register">Register here</Link>
+            Don &apos t have an account? <Link to="/register">Register here</Link>
           </Typography>
         </form>
       </div>

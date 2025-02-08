@@ -1,121 +1,101 @@
-import React, { useState } from "react";
-import {
-  TextField,
-  Button,
-  Container,
-  Typography,
-  Box,
-  Card,
-  CardContent,
-  Grid,
-  CssBaseline,
-  createTheme,
-  ThemeProvider,
-} from "@mui/material";
-import axios from "axios";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Container, TextField, Button, Typography, Snackbar } from '@mui/material';
+import axios from 'axios';
+// import './Verify.css'; // Uncomment if you have a CSS file for styling
 
-const Verify = () => {
-    const [formData, setFormData] = useState({
-      certificateId: "",
-      studentName: "",
-      prn: "",
-    });
-  
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-          ...formData,
-          [name]: value,
-        });
-      };
-    
+function Verify() {
+  const [formData, setFormData] = useState({
+    name: '',
+    prnNumber: '',
+    marksId: '',
+  });
 
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        try {
-          const response = await axios.post("http://localhost:8080/api/verify", formData);
-          console.log("Response from backend:", response.data);
-          alert("Verification data sent successfully!");
-        } catch (error) {
-          console.error("Error sending data to backend:", error);
-          alert("Failed to send verification data.");
-        }
-      };
-    
-      return (
-    <Container
-      maxWidth="lg" // Changed to 'lg' to accommodate the two-column layout
-      className="login-page"
-      sx={{
-        backgroundColor: '#F1E7D7',
-        minHeight: '100vh',
-        padding: '1rem',
-        marginTop: '1rem',
-      }}
-    >
-      <Grid container spacing={2}>
-        {/* Left Grid for Image */}
-        <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100%',
-            }}
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [snackbarOpen, setSnackbarOpen] = useState(false); // State for Snackbar
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrorMessage('');
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMessage('');
+
+    try {
+      const response = await axios.post('/api/verify', formData); // Replace with your actual API endpoint
+
+      if (response.status === 200) {
+        const verificationData = response.data;
+        localStorage.setItem('verificationToken', verificationData.token); // Or store verification data
+        navigate('/verification-success'); // Redirect to success page
+      } else {
+        setErrorMessage('Verification failed. Please check your details.');
+        setSnackbarOpen(true); // Open Snackbar for error
+      }
+    } catch (error) {
+      setErrorMessage('A network error occurred. Please try again later.');
+      console.error('Verification error:', error);
+      setSnackbarOpen(true); // Open Snackbar for error
+    }
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
+  return (
+    <Container maxWidth="sm" className="verify-page" sx={{ backgroundColor: '#F1E7D7', minHeight: '100vh', padding: '1rem', marginTop: '1rem', marginRight: '0rem' }}>
+      <div className="verify-container">
+        <Typography variant="h4" gutterBottom sx={{ color: 'black', fontFamily: 'Merriweather, serif', textAlign: 'center' }}>
+          VERIFY
+        </Typography>
+        <form className="verify-form" onSubmit={handleSubmit}>
+          <TextField
+            label="Name"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="PRN Number"
+            type="text"
+            name="prnNumber"
+            value={formData.prnNumber}
+            onChange={handleChange}
+            required
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Marks ID"
+            type="text"
+            name="marksId"
+            value={formData.marksId}
+            onChange={handleChange}
+            required
+            fullWidth
+            margin="normal"
+          />
+          <br /><br />
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{ backgroundColor: '#BED4F9', color: 'black', '&:hover': { backgroundColor: '#1E2952', color: 'white' } }}
+            fullWidth
           >
-          </Box>
-        </Grid>
+            Verify
+          </Button>
 
-        {/* Right Grid for Login Form */}
-        <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100%',
-            }}
-          >
-            <Typography variant="h4" gutterBottom sx={{ color: 'black', fontFamily: 'Merriweather, serif', textAlign: 'center' }}>
-              LOGIN
-            </Typography>
-            <form className="login-form" onSubmit={handleSubmit}>
-              <TextField
-                label="Email"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                fullWidth
-                margin="normal"
-              />
-              <TextField
-                label="Password"
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                fullWidth
-                margin="normal"
-              />
-              <br /><br />
-              <Button type="submit" variant="contained" color="primary" fullWidth>
-                Login
-              </Button>
-              {errorMessage && <Typography color="error" className="error-message">{errorMessage}</Typography>}
-              <br /><br />
-              <Typography className="register-link">
-                Don't have an account? <Link to="/register">Register here</Link>
-              </Typography>
-            </form>
-          </Box>
-        </Grid>
-      </Grid>
+          {errorMessage && <Typography color="error" className="error-message">{errorMessage}</Typography>}
+        </form>
+      </div>
 
       <Snackbar
         open={snackbarOpen}

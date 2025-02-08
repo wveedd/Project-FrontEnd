@@ -101,13 +101,13 @@ function LandingPage() {
         <Grid container spacing={4} sx={{ marginTop: '2rem' }}>
           <Grid item xs={12} sm={6}>
             <Paper elevation={3} sx={{ padding: '2rem', textAlign: 'center' }}>
-              <Typography>"Easy and reliable verification."</Typography>
+              <Typography>Easy and reliable verification.</Typography>
               <Typography className="testimonial-author">- John Doe, HR Manager</Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paper elevation={3} sx={{ padding: '2rem', textAlign: 'center' }}>
-              <Typography>"Great tool for Verifying the students!"</Typography>
+              <Typography>Great tool for Verifying the students!</Typography>
               <Typography className="testimonial-author">- Jane Smith, Placement Agency</Typography>
             </Paper>
           </Grid>

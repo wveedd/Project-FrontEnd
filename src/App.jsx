@@ -8,9 +8,25 @@ import './index.css';
 import Login from './pages/Login'; // 
 import Verify from './pages/Verify';
 // Import your CSS if you have it
-
+import { CssBaseline, Box } from '@mui/material';
+import Sidebar from './pages/Admin/SideBar';
+import Topbar from './pages/Admin/Topbar';
+import MainContent from './pages/Admin/MainContent';
 
 function App() {
+  // return (
+  //   <Router>
+  //     <div className="App">
+  //       <Navbar />
+  //       <Routes>
+  //         <Route path="/" element={<LandingPage />} />
+  //         <Route path="/about" element={<AboutUs />} />
+  //         <Route path="/register" element={<Registration />} />
+  //         <Route path="/Login" element={<Login />} />
+  //       </Routes>
+  //     </div>
+  //   </Router>
+  // );
   return (
     <Router>
       <div className="App">
@@ -23,7 +39,6 @@ function App() {
         </Routes>
       </div>
     </Router>
-    // <Verify />
   );
 }
 

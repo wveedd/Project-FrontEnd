@@ -70,7 +70,7 @@ function Registration() {
   };
 
   return (
-    <Container maxWidth="sm" className="registration-page" sx={{ backgroundColor: '#F1E7D7', minHeight: '100vh', padding: '1rem', marginTop: '1rem' }}>
+    <Container maxWidth="sm" className="registration-page" sx={{ backgroundColor: '#F1E7D7', minHeight: '100vh', padding: '1rem', marginTop: '1rem', marginRight : '0rem' }}>
       <Typography variant="h4" gutterBottom sx={{ color: 'black', fontFamily: 'Merriweather, serif',textAlign: 'center'}} >
         REGISTER
       </Typography>

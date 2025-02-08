@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button  } from '@mui/material';
 
 const Topbar = () => {
   return (
@@ -11,10 +11,11 @@ const Topbar = () => {
         zIndex: (theme) => theme.zIndex.drawer + 1, // Ensure the topbar is above the sidebar
       }}
     >
-      <Toolbar>
-        <Typography variant="h6" noWrap>
+      <Toolbar sx={{ backgroundColor: '#1E2952' }}>
+        <Typography variant="h6" noWrap sx={{ flexGrow: 1}}>
           Admin Dashboard
         </Typography>
+        <Button color="inherit" >Logout</Button>
       </Toolbar>
     </AppBar>
   );

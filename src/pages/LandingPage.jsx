@@ -26,15 +26,30 @@ function LandingPage() {
   return (
     // Altered: Using Box with width: '100%' to cover the full width
     <Box sx={{ backgroundColor: '#F1E7D7', minHeight: '100vh', padding: '1rem', marginTop: '1rem' }}>
-      <Box className="hero" sx={{ position: 'relative', textAlign: 'center', color: 'white', mb: 4  }}>
+      <Box className="hero"  sx={{
+    position: 'relative',
+    textAlign: 'center',
+    color: 'white',
+    mb: 4,
+    height: '400px',
+    //backgroundImage: 'url(https://i.pinimg.com/736x/ab/7f/86/ab7f86ab6a787d2a03f4f000f288f740.jpg)',
+    //backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    
+    zIndex: -0,
+  }}
+>
         <img
           src="https://i.pinimg.com/736x/ab/7f/86/ab7f86ab6a787d2a03f4f000f288f740.jpg"
           alt=""
-          style={{ width: '100%', height: 'auto', position: 'absolute', top: 0, left: 0, zIndex: -1 }}
+          style={{ width: '100%', height: '400px', position: 'absolute', top: 0, left: 0,filter: 'blur(5px)', zIndex: -1 }}
         />
         <Box sx={{ padding: '2rem' }}>
           <Typography variant="h2" sx={{ color: 'black', fontFamily: 'Merriweather, serif'}}>Secure Your Future with Verified Credentials</Typography>
-          <Typography variant="body1" sx={{ marginBottom: '2rem', color: 'black' }}>
+          <Typography variant="body1" sx={{ marginBottom: '2rem', color: 'black', fontFamily:'Merriweather, serif' }}>
             Instantly verify the authenticity of certificates, diplomas, and other credentials. Build trust and confidence in your achievements.
           </Typography>
           <Button variant="contained" color="primary" onClick={() => window.location.href = '/verify'}>Verify Now</Button>
@@ -43,7 +58,7 @@ function LandingPage() {
       </Box>
 
       <Box className="how-it-works" sx={{ mb: 4 }}>
-        <Typography variant="h4" align="center">How It Works</Typography>
+        <Typography variant="h4" align="center" sx={{fontFamily: 'Merriweather, serif'}}>How It Works</Typography>
         <Grid container spacing={4} sx={{ marginTop: '2rem' }}>
           <Grid item xs={12} sm={4}>
             <Paper elevation={3} sx={{ padding: '2rem', textAlign: 'center' }}>

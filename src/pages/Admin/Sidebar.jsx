@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Box } from '@mui/material';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, Box} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ViewListIcon from '@mui/icons-material/ViewList';
@@ -10,7 +10,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 const drawerWidth = 240;
 
 const Sidebar = () => {
-  const navigate = useNavigate();
+ // const navigate = useNavigate();
 
   return (
     <Box
@@ -27,7 +27,7 @@ const Sidebar = () => {
       <Drawer variant="permanent" anchor="left">
         <List>
           {/* Add Certificate */}
-          <ListItem button onClick={() => navigate('/certificate')}>
+          <ListItem>
             <ListItemIcon>
               <AddCircleOutlineIcon />
             </ListItemIcon>
@@ -35,7 +35,7 @@ const Sidebar = () => {
           </ListItem>
 
           {/* View Certificate */}
-          <ListItem button onClick={() => navigate('/certificate')}>
+          <ListItem>
             <ListItemIcon>
               <ViewListIcon />
             </ListItemIcon>
@@ -43,7 +43,7 @@ const Sidebar = () => {
           </ListItem>
 
           {/* View User */}
-          <ListItem button onClick={() => navigate('/certificate')}>
+          <ListItem>
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
@@ -51,7 +51,7 @@ const Sidebar = () => {
           </ListItem>
 
           {/* View Verification */}
-          <ListItem button onClick={() => navigate('/certificate')}>
+          <ListItem >
             <ListItemIcon>
               <VerifiedUserIcon />
             </ListItemIcon>
@@ -59,7 +59,7 @@ const Sidebar = () => {
           </ListItem>
 
           {/* View Transaction */}
-          <ListItem button onClick={() => navigate('/certificate')}>
+          <ListItem>
             <ListItemIcon>
               <ReceiptIcon />
             </ListItemIcon>

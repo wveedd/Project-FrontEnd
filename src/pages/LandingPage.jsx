@@ -33,7 +33,7 @@ function LandingPage() {
           style={{ width: '100%', height: 'auto', position: 'absolute', top: 0, left: 0, zIndex: -1 }}
         />
         <Box sx={{ padding: '2rem' }}>
-          <Typography variant="h2" sx={{ color: 'black', fontFamily: 'Arial, sans-serif'}}>Secure Your Future with Verified Credentials</Typography>
+          <Typography variant="h2" sx={{ color: 'black', fontFamily: 'Merriweather, serif'}}>Secure Your Future with Verified Credentials</Typography>
           <Typography variant="body1" sx={{ marginBottom: '2rem', color: 'black' }}>
             Instantly verify the authenticity of certificates, diplomas, and other credentials. Build trust and confidence in your achievements.
           </Typography>

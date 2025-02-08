@@ -14,7 +14,7 @@ import {
   FormHelperText, 
   Box 
 } from '@mui/material';
-import './Registration.css';
+// import './Registration.css';
 
 function Registration() {
   const [formData, setFormData] = useState({
@@ -70,9 +70,9 @@ function Registration() {
   };
 
   return (
-    <Container maxWidth="sm" className="registration-page">
-      <Typography variant="h4" gutterBottom>
-        Registration
+    <Container maxWidth="sm" className="registration-page" sx={{ backgroundColor: '#F1E7D7', minHeight: '100vh', padding: '1rem', marginTop: '1rem' }}>
+      <Typography variant="h4" gutterBottom sx={{ color: 'black', fontFamily: 'Merriweather, serif',textAlign: 'center'}} >
+        REGISTER
       </Typography>
       <Box component="form" onSubmit={handleSubmit} className="registration-form">
         <TextField
@@ -184,8 +184,13 @@ function Registration() {
           onChange={handleChange}
           required
         />
-        <Button type="submit" variant="contained" color="primary" fullWidth>
-          Register
+        <br /><br />
+        <Button 
+          type="submit" 
+          variant="contained" 
+          sx={{ backgroundColor: '#BED4F9', color: 'black', '&:hover': { backgroundColor: '#1E2952',color: 'white' } }} 
+          fullWidth
+        >Register
         </Button>
         {errorMessage && (
           <Typography color="error" variant="body2" gutterBottom>
@@ -197,6 +202,7 @@ function Registration() {
             {successMessage}
           </Typography>
         )}
+        <br /> <br />
         <Typography variant="body2" className="login-link">
           Already have an account? <Link to="/login">Login here</Link>
         </Typography>

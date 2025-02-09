@@ -7,7 +7,8 @@ import Registration from './pages/Registration';
 import './index.css';
 import Navbar from './Components/NavBar';
 import DashboardNavbar from './Components/DashboardNavbar';
-import Login from './pages/Login'; // 
+import Login from './pages/Login';
+import Verify from './pages/Verify';
 // Import your CSS if you have it
 // import { CssBaseline, Box } from '@mui/material';
 // import Sidebar from './pages/Admin/SideBar';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Verify" element={<Verify />} />
         </Routes>
       </div>
     </Router>

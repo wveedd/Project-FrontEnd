@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, TextField, Button, Typography, Snackbar } from '@mui/material';
+import { Container, TextField, Button, Typography, Snackbar, Grid, Box } from '@mui/material';
 import axios from 'axios';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+// import './Login.css';
 // import './Verify.css'; // Uncomment if you have a CSS file for styling
 
 function Verify() {
@@ -46,9 +50,47 @@ function Verify() {
     setSnackbarOpen(false);
   };
 
+   // Slider settings
+   const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000, // Change image every 3 seconds
+  };
+
+    // Array of image URLs for the slider
+    const images = [
+      'https://i.pinimg.com/736x/ab/7f/86/ab7f86ab6a787d2a03f4f000f288f740.jpg',
+      'https://i.pinimg.com/1200x/cc/f4/9b/ccf49b6cd6ce914b80a18e9316a44dcd.jpg',
+      ''
+    ];
+
   return (
-    <Container maxWidth="sm" className="verify-page" sx={{ backgroundColor: '#F1E7D7', minHeight: '100vh', padding: '1rem', marginTop: '1rem', marginRight: '0rem' }}>
-      <div className="verify-container">
+    <Container maxWidth="lg" sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+  <Grid container spacing={2} sx={{ backgroundColor: '#F1E7D7', borderRadius: '8px', boxShadow: 3, width: '130%', maxWidth: '1200px', height: '650px' }}>
+    {/* Left Side: Image Slider */}
+    <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Box sx={{ width: '100%', padding: '5rem' }}>
+        <Slider {...sliderSettings}>
+          {images.map((image, index) => (
+            <div key={index}>
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+              />
+            </div>
+          ))}
+        </Slider>
+      </Box>
+    </Grid>
+
+    {/* Right Side: Verify Form */}
+    <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Box sx={{ width: '100%', padding: '2rem' }}>
         <Typography variant="h4" gutterBottom sx={{ color: 'black', fontFamily: 'Merriweather, serif', textAlign: 'center' }}>
           VERIFY
         </Typography>
@@ -95,16 +137,17 @@ function Verify() {
 
           {errorMessage && <Typography color="error" className="error-message">{errorMessage}</Typography>}
         </form>
-      </div>
+      </Box>
+    </Grid>
+  </Grid>
 
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}
-        message={errorMessage}
-      />
-    </Container>
+  <Snackbar
+    open={snackbarOpen}
+    autoHideDuration={6000}
+    onClose={handleSnackbarClose}
+    message={errorMessage}
+  />
+</Container>
   );
 }
-
 export default Verify;

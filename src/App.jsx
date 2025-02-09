@@ -25,7 +25,8 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/Verify" element={<Verify />} />
+          <Route path="/verify" element={<Verify />} />
+          
         </Routes>
       </div>
     </Router>
@@ -56,7 +57,7 @@ const NavbarWrapper = () => {
   const location = useLocation(); // Get the current route location
 
   // Define which navbar to show based on the route
-  if (location.pathname.startsWith('/dashboard')) {
+  if (location.pathname.startsWith('/Login')) {
     return <DashboardNavbar />; // Use a different navbar for dashboard routes
   }
 

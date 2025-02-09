@@ -52,7 +52,7 @@ function LandingPage() {
           <Typography variant="body1" sx={{ marginBottom: '2rem', color: 'black', fontFamily:'Merriweather, serif' }}>
             Instantly verify the authenticity of certificates, diplomas, and other credentials. Build trust and confidence in your achievements.
           </Typography>
-          <Button variant="contained" color="primary" onClick={() => window.location.href = '/verify'}>Verify Now</Button> 
+          <Button variant="contained" color="primary" onClick={() => window.location.href = '/admin-login'}>Verify Now</Button> 
           {/* to change */}
           <Button variant="outlined" color="secondary" onClick={() => window.location.href = '/about'} sx={{ marginLeft: '1rem' }}>Learn More</Button>
         </Box>

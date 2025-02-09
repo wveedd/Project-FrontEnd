@@ -9,6 +9,7 @@ import Navbar from './Components/NavBar';
 import DashboardNavbar from './Components/DashboardNavbar';
 import Login from './pages/Login';
 import Verify from './pages/Verify';
+import AdminLogin from './pages/Admin/AdminLogin';
 // Import your CSS if you have it
 // import { CssBaseline, Box } from '@mui/material';
 // import Sidebar from './pages/Admin/SideBar';
@@ -25,8 +26,8 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/verify" element={<Verify />} />
-          
+          <Route path="/Verify" element={<Verify />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
         </Routes>
       </div>
     </Router>

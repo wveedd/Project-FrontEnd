@@ -135,9 +135,17 @@ function Login() {
 
               {errorMessage && <Typography color="error" className="error-message">{errorMessage}</Typography>}
               <br /><br />
-              <Typography className="register-link">
-                Don&apos;t have an account? <Link to="/register">Register here</Link>
-              </Typography>
+<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+  <Typography>
+    Don&apos;t have an account? <Link to="/register">Register here</Link>
+  </Typography>
+  <Typography>
+    or
+  </Typography>
+  <Typography className="Admin-link">
+    Login as Admin <Link to="/admin-login">Admin Login</Link>
+  </Typography>
+</Box>
             </form>
           </Box>
         </Grid>

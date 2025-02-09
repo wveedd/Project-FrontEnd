@@ -1,7 +1,6 @@
 //import React from 'react';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate} from 'react-router-dom';
-// import Navbar from './Components/NavBar';
 import LandingPage from './pages/LandingPage';
 import AboutUs from './pages/AboutUs';
 import Registration from './pages/Registration';
@@ -10,14 +9,10 @@ import Navbar from './Components/NavBar';
 import DashboardNavbar from './Components/DashboardNavbar';
 import Login from './pages/Login';
 import Verify from './pages/Verify';
-import AdminLogin from './pages/Admin/AdminLogin';
+import AdminLogin from './Components/AdminLogin';
 import Adminfunc from './Components/Adminfunc';
 import AdminDashboard from './Components/AdminDashboard';
-// Import your CSS if you have it
-// import { CssBaseline, Box } from '@mui/material';
-// import Sidebar from './pages/Admin/SideBar';
-// import Topbar from './pages/Admin/Topbar';
-// import MainContent from './pages/Admin/MainContent';
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -63,24 +58,6 @@ function App() {
 
   // Navbar Wrapper Component
 
-  // return (
-  //   <Box sx={{ display: 'flex' }}>
-  //     <CssBaseline />
-  //     <Topbar />
-  //     <Sidebar />
-  //     <Box
-  //       component="main"
-  //       sx={{
-  //         flexGrow: 1,
-  //         p: 3,
-  //         marginLeft: '240px', // Adjust for the sidebar width
-  //         marginTop: '64px', // Adjust for the topbar height
-  //       }}
-  //     >
-  //       <MainContent />
-  //     </Box>
-  //   </Box>
-  // );
 }
 const NavbarWrapper = () => {
   const location = useLocation(); // Get the current route location

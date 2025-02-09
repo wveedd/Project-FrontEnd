@@ -1,4 +1,3 @@
-// src/pages/Login/Login.jsx
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
@@ -8,67 +7,54 @@ import {
   Typography,
   Snackbar,
   Grid,
-  Box,   
-} 
-from '@mui/material';
+  Box,
+} from '@mui/material';
 import axios from 'axios';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-// import './Login.css';
 
-function Login() {
+function AdminLogin() {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '', // Changed from email to username
     password: '',
-});
+  });
 
-const navigate = useNavigate();
-const [errorMessage, setErrorMessage] = useState('');
-const [successMessage, setSuccessMessage] = useState('');
-const [snackbarOpen, setSnackbarOpen] = useState(false);
-const [isLoading, setIsLoading] = useState(false); // Add this line
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [snackbarOpen, setSnackbarOpen] = useState(false); // State for Snackbar
 
-const handleChange = (e) => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrorMessage('');
-};
+  };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
-    setIsLoading(true); // Set loading state to true
 
     try {
-        const response = await axios.post('http://localhost:8080/api/certi/users/login', formData);
-        console.log('Received response:', response);
+      const response = await axios.post('http://localhost:8080/api/admin/admin-login', formData); // Replace with your actual API endpoint
 
-        if (response.status >= 200 && response.status < 300) {
-            const userData = response.data;
-            localStorage.setItem('token', userData.token);
-            setSuccessMessage('Login successful!');
-            setSnackbarOpen(true);
-            setTimeout(() => navigate('/verify'), 2000); // Redirect after 2 seconds
-        } else {
-            setErrorMessage('Invalid email or password.');
-            setSnackbarOpen(true);
-        }
+      if (response.status === 200) {
+        const userData = response.data;
+        localStorage.setItem('token', userData.token); // Store token in localStorage
+        navigate('/AdminDashboard'); // Redirect to AdminDashboard
+      } else {
+        setErrorMessage('Invalid username or password.'); // Updated error message
+        setSnackbarOpen(true); // Open Snackbar for error
+      }
     } catch (error) {
-        if (error.response && error.response.status === 400) {
-            setErrorMessage('Invalid email or password.');
-        } else {
-            setErrorMessage('A network error occurred. Please try again later.');
-        }
-        console.error('Login error:', error);
-        setSnackbarOpen(true);
-    } finally {
-        setIsLoading(false); // Set loading state to false
+      setErrorMessage('A network error occurred. Please try again later.');
+      console.error('Login error:', error);
+      setSnackbarOpen(true); // Open Snackbar for error
     }
-};
+  };
 
-const handleSnackbarClose = () => {
+  const handleSnackbarClose = () => {
     setSnackbarOpen(false);
-};
+  };
+
   // Slider settings
   const sliderSettings = {
     dots: true,
@@ -84,11 +70,19 @@ const handleSnackbarClose = () => {
   const images = [
     'https://i.pinimg.com/736x/ab/7f/86/ab7f86ab6a787d2a03f4f000f288f740.jpg',
     'https://i.pinimg.com/1200x/cc/f4/9b/ccf49b6cd6ce914b80a18e9316a44dcd.jpg',
+    
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Grid container spacing={2} sx={{ backgroundColor: '#F1E7D7', borderRadius: '8px', boxShadow: 3, width:'130%', maxWidth:'1200px', height:'650px' }}>
+    <Container
+      maxWidth="lg"
+      sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+    >
+      <Grid
+        container
+        spacing={2}
+        sx={{ backgroundColor: '#F1E7D7', borderRadius: '8px', boxShadow: 3, width: '130%', maxWidth: '1200px', height: '650px' }}
+      >
         {/* Left Side: Image Slider */}
         <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Box sx={{ width: '100%', padding: '5rem' }}>
@@ -109,15 +103,19 @@ const handleSnackbarClose = () => {
         {/* Right Side: Login Form */}
         <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Box sx={{ width: '100%', padding: '2rem' }}>
-            <Typography variant="h4" gutterBottom sx={{ color: 'black', fontFamily: 'Merriweather, serif', textAlign: 'center' }}>
-              LOGIN
+            <Typography
+              variant="h4"
+              gutterBottom
+              sx={{ color: 'black', fontFamily: 'Merriweather, serif', textAlign: 'center' }}
+            >
+              ADMIN-LOGIN
             </Typography>
             <form className="login-form" onSubmit={handleSubmit}>
               <TextField
-                label="Email"
-                type="email"
-                name="email"
-                value={formData.email}
+                label="Username" // Changed from Email to Username
+                type="text"
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
                 required
                 fullWidth
@@ -133,29 +131,18 @@ const handleSnackbarClose = () => {
                 fullWidth
                 margin="normal"
               />
-              <br /><br />
+              <br />
+              <br />
               <Button
                 type="submit"
                 variant="contained"
                 sx={{ backgroundColor: '#BED4F9', color: 'black', '&:hover': { backgroundColor: '#1E2952', color: 'white' } }}
                 fullWidth
               >
-                Login
+                Admin-Login
               </Button>
 
               {errorMessage && <Typography color="error" className="error-message">{errorMessage}</Typography>}
-              <br /><br />
-<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-  <Typography>
-    Don&apos;t have an account? <Link to="/register">Register here</Link>
-  </Typography>
-  <Typography>
-    or
-  </Typography>
-  <Typography className="Admin-link">
-    Login as Admin <Link to="/admin-login">Admin Login</Link>
-  </Typography>
-</Box>
             </form>
           </Box>
         </Grid>
@@ -171,4 +158,4 @@ const handleSnackbarClose = () => {
   );
 }
 
-export default Login;
+export default AdminLogin;

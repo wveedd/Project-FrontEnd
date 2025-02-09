@@ -49,14 +49,22 @@ function Registration() {
     e.preventDefault();
     setErrorMessage('');
     setSuccessMessage('');
-
+  
+    // Validate form data
+    for (const key in formData) {
+      if (formData[key] === '') {
+        setErrorMessage(`Please fill out the ${key} field.`);
+        return;
+      }
+    }
+  
     try {
-      const response = await axios.post('/api/register', formData, {
+      const response = await axios.post('http://localhost:8080/api/certi/users/register', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
+  
       if (response.status === 200) {
         setSuccessMessage('Registration successful! Redirecting to login...');
         setTimeout(() => {
@@ -90,7 +98,6 @@ function Registration() {
   const images = [
     'https://i.pinimg.com/736x/ab/7f/86/ab7f86ab6a787d2a03f4f000f288f740.jpg',
     'https://i.pinimg.com/1200x/cc/f4/9b/ccf49b6cd6ce914b80a18e9316a44dcd.jpg',
-    ''
   ];
 
   return (

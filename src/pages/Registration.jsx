@@ -98,7 +98,7 @@ function Registration() {
     <Grid container spacing={2} sx={{ backgroundColor: '#F1E7D7', borderRadius: '8px', boxShadow: 3, width: '130%', maxWidth: '1200px', height: '650px' }}>
       {/* Left Side: Image Slider */}
       <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Box sx={{ marginTop: '50%', width: '100%', maxWidth: '600px',width: '100%', height: '100%', padding: '0', overflow: 'hidden' }}>
+        <Box sx={{ marginTop: '50%', maxWidth: '600px',width: '100%', height: '100%', padding: '0', overflow: 'hidden' }}>
           <Slider {...sliderSettings}>
             {images.map((image, index) => (
               <div key={index}>

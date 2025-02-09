@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { Button, AppBar, Toolbar, Typography, Container } from '@mui/material';
 import AdminDashboard from './AdminDashboard'; // Import your admin components
-import OtherAdminComponent from './OtherAdminComponent'; // Example of another admin component
+
 
 const Adminfunc = () => {
   return (

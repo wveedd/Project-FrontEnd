@@ -1,5 +1,6 @@
 //import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate} from 'react-router-dom';
 // import Navbar from './Components/NavBar';
 import LandingPage from './pages/LandingPage';
 import AboutUs from './pages/AboutUs';
@@ -10,6 +11,8 @@ import DashboardNavbar from './Components/DashboardNavbar';
 import Login from './pages/Login';
 import Verify from './pages/Verify';
 import AdminLogin from './pages/Admin/AdminLogin';
+import Adminfunc from './Components/Adminfunc';
+import AdminDashboard from './Components/AdminDashboard';
 // Import your CSS if you have it
 // import { CssBaseline, Box } from '@mui/material';
 // import Sidebar from './pages/Admin/SideBar';
@@ -17,6 +20,27 @@ import AdminLogin from './pages/Admin/AdminLogin';
 // import MainContent from './pages/Admin/MainContent';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    console.log("Token found:", token); // Debugging output
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogin = (token) => {
+    console.log("Logging in, token:", token);
+    localStorage.setItem('token', token);
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    console.log("Logging out");
+    localStorage.removeItem('token');
+    setIsAuthenticated(false);
+  };
   return (
     <Router>
       <div className="App">
@@ -28,7 +52,10 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Verify" element={<Verify />} />
           <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/admin/" element={<Adminfunc />} />
+          <Route path="/admin/*" element={<Adminfunc />} />
+          <Route path="/AdminDashboard/*"
+  element={isAuthenticated ? <AdminDashboard handleLogout={handleLogout} /> : <Navigate to="/login" />} 
+/>
         </Routes>
       </div>
     </Router>

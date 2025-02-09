@@ -9,11 +9,7 @@
   padding: 40px;
   margin: 20px;
 
- /* background-image: url('https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bG9naW4lMjBwYWdlJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D');
- background-position: center;
- background-repeat: no-repeat;
- background-size: c;
-  */color: #000000;
+color: #000000;
   background-image: radial-gradient( circle 369px at -2.9% 12.9%,  rgba(247,234,163,1) 0%, rgba(236,180,238,0.56) 46.4%, rgba(163,203,247,1) 100.7% );
 
 }

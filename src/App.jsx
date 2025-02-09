@@ -28,6 +28,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Verify" element={<Verify />} />
           <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin/" element={<Adminfunc />} />
         </Routes>
       </div>
     </Router>

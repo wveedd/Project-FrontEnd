@@ -1,4 +1,3 @@
-// src/pages/Registration.jsx
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
@@ -6,13 +5,12 @@ import {
   TextField,
   Button,
   Typography,
-  Snackbar,
   Grid,
   Box,
-  FormControl, // Ensure this is imported
-  InputLabel,  // Ensure this is imported
-  Select,      // Ensure this is imported
-  MenuItem     // Ensure this is imported
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from '@mui/material';
 import axios from 'axios';
 import Slider from 'react-slick';
@@ -23,20 +21,18 @@ function Registration() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: '',
-    UserId: '',
-    PhoneNo: '',
-    Organization: '',
-    Designation: '',
+    userPassword: '',
+    phoneNumber: '',
+    organization: '',
+    designation: '',
     typeOfUser: '',
-    Address: '',
-    ReasonForVer: '',
+    address: '',
+    reasonForVerification: '',
   });
 
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +45,7 @@ function Registration() {
     e.preventDefault();
     setErrorMessage('');
     setSuccessMessage('');
-  
+
     // Validate form data
     for (const key in formData) {
       if (formData[key] === '') {
@@ -57,14 +53,14 @@ function Registration() {
         return;
       }
     }
-  
+
     try {
       const response = await axios.post('http://localhost:8080/api/certi/users/register', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-  
+
       if (response.status === 200) {
         setSuccessMessage('Registration successful! Redirecting to login...');
         setTimeout(() => {
@@ -80,8 +76,6 @@ function Registration() {
       console.error('Registration error:', error);
     }
   };
-
-
 
   // Slider settings
   const sliderSettings = {
@@ -102,172 +96,161 @@ function Registration() {
 
   return (
     <Container maxWidth="lg" sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <Grid container spacing={2} sx={{ backgroundColor: '#F1E7D7', borderRadius: '8px', boxShadow: 3, width: '130%', maxWidth: '1200px', height: '650px' }}>
-      {/* Left Side: Image Slider */}
-      <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Box sx={{ marginTop: '50%', maxWidth: '600px',width: '100%', height: '100%', padding: '0', overflow: 'hidden' }}>
-          <Slider {...sliderSettings}>
-            {images.map((image, index) => (
-              <div key={index}>
-                <img
-                  src={image}
-                  alt={`Slide ${index + 1}`}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} // Ensure the image covers the container
-                />
-              </div>
-            ))}
-          </Slider>
-        </Box>
-      </Grid>
-  
-      {/* Right Side: Login Form */}
-      <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflowY: 'auto', padding: '2rem' }}>
-          <Typography variant="h4" gutterBottom sx={{ color: 'black', fontFamily: 'Merriweather, serif', textAlign: 'center' }}>
-            REGISTER
-          </Typography>
-          <form className="registration-form" onSubmit={handleSubmit} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <TextField
-              fullWidth
-              margin="normal"
-              label="Name"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              label="Email"
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              label="User Id"
-              id="UserId"
-              name="UserId"
-              value={formData.UserId}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              label="Password"
-              id="password"
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              label="Phone Number"
-              id="PhoneNo"
-              name="PhoneNo"
-              type="number"
-              value={formData.PhoneNo}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              label="Organization"
-              id="Organization"
-              name="Organization"
-              value={formData.Organization}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              label="Designation"
-              id="Designation"
-              name="Designation"
-              value={formData.Designation}
-              onChange={handleChange}
-              required
-            />
-            <FormControl fullWidth margin="normal" required>
-              <InputLabel id="typeOfUser-label">Type Of User</InputLabel>
-              <Select
-                labelId="typeOfUser-label"
-                id="TypeOfUser"
-                name="typeOfUser"
-                value={formData.typeOfUser}
-                onChange={handleChange}
-                label="Type Of User"
-              >
-                <MenuItem value="" disabled>
-                  Select User Type
-                </MenuItem>
-                <MenuItem value="PlacementAgency">Placement Agency</MenuItem>
-                <MenuItem value="Institution">Institution</MenuItem>
-                <MenuItem value="Company">Company</MenuItem>
-              </Select>
-            </FormControl>
-            <TextField
-              fullWidth
-              margin="normal"
-              label="Address"
-              id="Address"
-              name="Address"
-              value={formData.Address}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              label="Reason For Verification"
-              id="ReasonForVer"
-              name="ReasonForVer"
-              value={formData.ReasonForVer}
-              onChange={handleChange}
-              required
-            />
-            <br />
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{ backgroundColor: '#BED4F9', color: 'black', '&:hover': { backgroundColor: '#1E2952', color: 'white' } }}
-              fullWidth
-            >
-              Register
-            </Button>
-  
-            {errorMessage && (
-              <Typography color="error" variant="body2" gutterBottom>
-                {errorMessage}
-              </Typography>
-            )}
-            {successMessage && (
-              <Typography color="primary" variant="body2" gutterBottom>
-                {successMessage}
-              </Typography>
-            )}
-            
-  
-            <Typography variant="body2" className="login-link">
-              Already have an account? <Link to="/login">Login here</Link>
+      <Grid container spacing={2} sx={{ backgroundColor: '#F1E7D7', borderRadius: '8px', boxShadow: 3, width: '130%', maxWidth: '1200px', height: '650px' }}>
+        {/* Left Side: Image Slider */}
+        <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Box sx={{ marginTop: '50%', maxWidth: '600px', width: '100%', height: '100%', padding: '0', overflow: 'hidden' }}>
+            <Slider {...sliderSettings}>
+              {images.map((image, index) => (
+                <div key={index}>
+                  <img
+                    src={image}
+                    alt={`Slide ${index + 1}`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} // Ensure the image covers the container
+                  />
+                </div>
+              ))}
+            </Slider>
+          </Box>
+        </Grid>
+
+        {/* Right Side: Registration Form */}
+        <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflowY: 'auto', padding: '2rem' }}>
+            <Typography variant="h4" gutterBottom sx={{ color: 'black', fontFamily: 'Merriweather, serif', textAlign: 'center' }}>
+              REGISTER
             </Typography>
-          </form>
-        </Box>
+            <form className="registration-form" onSubmit={handleSubmit} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Name"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Email"
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Password"
+                id="password"
+                name="userPassword"
+                type="password"
+                value={formData.userPassword}
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Phone Number"
+                id="PhoneNo"
+                name="phoneNumber"
+                type="number"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Organization"
+                id="Organization"
+                name="organization"
+                value={formData.organization}
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Designation"
+                id="Designation"
+                name="designation"
+                value={formData.designation}
+                onChange={handleChange}
+                required
+              />
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel id="typeOfUser-label">Type Of User</InputLabel>
+                <Select
+                  labelId="typeOfUser-label"
+                  id="TypeOfUser"
+                  name="typeOfUser"
+                  value={formData.typeOfUser}
+                  onChange={handleChange}
+                  label="Type Of User"
+                >
+                  <MenuItem value="" disabled>
+                    Select User Type
+                  </MenuItem>
+                  <MenuItem value="PlacementAgency">Placement Agency</MenuItem>
+                  <MenuItem value="Institution">Institution</MenuItem>
+                  <MenuItem value="Company">Company</MenuItem>
+                </Select>
+              </FormControl>
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Address"
+                id="Address"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Reason For Verification"
+                id="ReasonForVer"
+                name="reasonForVerification"
+                value={formData.reasonForVerification}
+                onChange={handleChange}
+                required
+              />
+              <br />
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{ backgroundColor: '#BED4F9', color: 'black', '&:hover': { backgroundColor: '#1E2952', color: 'white' } }}
+                fullWidth
+              >
+                Register
+              </Button>
+
+              {errorMessage && (
+                <Typography color="error" variant="body2" gutterBottom>
+                  {errorMessage}
+                </Typography>
+              )}
+              {successMessage && (
+                <Typography color="primary" variant="body2" gutterBottom>
+                  {successMessage}
+                </Typography>
+              )}
+
+              <Typography variant="body2" className="login-link">
+                Already have an account? <Link to="/login">Login here</Link>
+              </Typography>
+            </form>
+          </Box>
+        </Grid>
       </Grid>
-    </Grid>
-  </Container>
+    </Container>
   );
 }
 

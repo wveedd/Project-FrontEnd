@@ -16,7 +16,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 function AdminLogin() {
   const [formData, setFormData] = useState({
-    username: '', // Changed from email to username
+    userName: '', // Changed from email to username
     password: '',
   });
 
@@ -34,12 +34,12 @@ function AdminLogin() {
     setErrorMessage('');
 
     try {
-      const response = await axios.post('http://localhost:8080/api/admin/admin-login', formData); // Replace with your actual API endpoint
+      const response = await axios.post('http://localhost:8080/api/admin/adminlogin', formData); // Replace with your actual API endpoint
 
       if (response.status === 200) {
         const userData = response.data;
         localStorage.setItem('token', userData.token); // Store token in localStorage
-        navigate('/AdminDashboard'); // Redirect to AdminDashboard
+        navigate('/AdminDashboard/'); // Redirect to AdminDashboard
       } else {
         setErrorMessage('Invalid username or password.'); // Updated error message
         setSnackbarOpen(true); // Open Snackbar for error
@@ -114,8 +114,8 @@ function AdminLogin() {
               <TextField
                 label="Username" // Changed from Email to Username
                 type="text"
-                name="username"
-                value={formData.username}
+                name="adminUserName"
+                value={formData.adminUserName}
                 onChange={handleChange}
                 required
                 fullWidth
@@ -124,8 +124,8 @@ function AdminLogin() {
               <TextField
                 label="Password"
                 type="password"
-                name="password"
-                value={formData.password}
+                name="adminPassword"
+                value={formData.adminPassword}
                 onChange={handleChange}
                 required
                 fullWidth

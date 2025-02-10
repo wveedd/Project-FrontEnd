@@ -26,7 +26,7 @@ const ViewUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('/api/users', {
+        const response = await axios.get('http://localhost:8080/api/admin/users', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },

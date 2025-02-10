@@ -22,7 +22,7 @@ const ViewCertificate = () => {
   useEffect(() => {
     const fetchCertificates = async () => {
       try {
-        const response = await axios.get('/api/certificates', {
+        const response = await axios.get('http://localhost:8080/api/admin/getCertis', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },

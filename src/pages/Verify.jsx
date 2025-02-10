@@ -10,9 +10,9 @@ import 'slick-carousel/slick/slick-theme.css';
 
 function Verify() {
   const [formData, setFormData] = useState({
-    name: '',
-    prnNumber: '',
-    marksId: '',
+    studentName: '',
+    prn: '',
+    certificateId: '',
   });
 
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function Verify() {
     setErrorMessage('');
 
     try {
-      const response = await axios.post('/api/verify', formData); // Replace with your actual API endpoint
+      const response = await axios.post('http://localhost:8080/api/verification/initiate-verification', formData); // Replace with your actual API endpoint
 
       if (response.status === 200) {
         const verificationData = response.data;
@@ -98,8 +98,8 @@ function Verify() {
           <TextField
             label="Name"
             type="text"
-            name="name"
-            value={formData.name}
+            name="studentName"
+            value={formData.studentName}
             onChange={handleChange}
             required
             fullWidth
@@ -108,18 +108,18 @@ function Verify() {
           <TextField
             label="PRN Number"
             type="text"
-            name="prnNumber"
-            value={formData.prnNumber}
+            name="prn"
+            value={formData.prn}
             onChange={handleChange}
             required
             fullWidth
             margin="normal"
           />
           <TextField
-            label="Marks ID"
+            label="Certificate ID"
             type="text"
-            name="marksId"
-            value={formData.marksId}
+            name="certificateId"
+            value={formData.certificateId}
             onChange={handleChange}
             required
             fullWidth

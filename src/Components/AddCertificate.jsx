@@ -17,9 +17,9 @@ const AddCertificate = () => {
     certificateId: '',
     studentName: '',
     prn: '',
-    courseName: '',
+    course_Name: '',
     grade: '',
-    enrollmentDate: null,
+    enrollment_Date: null,
     completionDate: null,
   });
 
@@ -35,7 +35,7 @@ const AddCertificate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/certificates', formData, {
+      const response = await axios.post('http://localhost:8080/api/admin/addCerti', formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -95,8 +95,8 @@ const AddCertificate = () => {
           <TextField
             fullWidth
             label="Course Name"
-            name="courseName"
-            value={formData.courseName}
+            name="course_Name"
+            value={formData.course_Name}
             onChange={handleChange}
             margin="normal"
             required
@@ -112,8 +112,8 @@ const AddCertificate = () => {
           />
           <DatePicker
             label="Enrollment Date"
-            value={formData.enrollmentDate}
-            onChange={(date) => handleDateChange('enrollmentDate', date)}
+            value={formData.enrollment_Date}
+            onChange={(date) => handleDateChange('enrollment_Date', date)}
             renderInput={(params) => (
               <TextField
                 {...params}

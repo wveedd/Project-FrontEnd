@@ -45,7 +45,7 @@ function Registration() {
     e.preventDefault();
     setErrorMessage('');
     setSuccessMessage('');
-
+  
     // Validate form data
     for (const key in formData) {
       if (formData[key] === '') {
@@ -53,14 +53,32 @@ function Registration() {
         return;
       }
     }
-
+  
+    // Password validation
+    const password = formData.userPassword;
+    if (password.length < 8) {
+      setErrorMessage('Password must be at least 8 characters long.');
+      return;
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      setErrorMessage('Password must contain at least one special character.');
+      return;
+    }
+  
+    // Phone number validation
+    const phoneNumber = formData.phoneNumber;
+    if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
+      setErrorMessage('Phone number must be exactly 10 digits long.');
+      return;
+    }
+  
     try {
       const response = await axios.post('http://localhost:8080/api/certi/users/register', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
+  
       if (response.status === 200) {
         setSuccessMessage('Registration successful! Redirecting to login...');
         setTimeout(() => {

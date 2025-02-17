@@ -96,7 +96,7 @@ const Transactions = () => {
                     {new Date(transaction.transactionDate).toLocaleDateString()}
                   </TableCell>
                   <TableCell>{transaction.transactionType}</TableCell>
-                  <TableCell>{transaction.userId}</TableCell>
+                  <TableCell>{transaction.user_Id}</TableCell>
                   <TableCell>{transaction.verificationId}</TableCell>
                 </TableRow>
               ))}

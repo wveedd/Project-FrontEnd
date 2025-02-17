@@ -17,7 +17,7 @@ import 'slick-carousel/slick/slick-theme.css';
 function Login() {
   const [formData, setFormData] = useState({
     email: '',
-    userPassword: '',
+    password: '',
   });
 
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ function Login() {
 
       if (response.status >= 200 && response.status < 300) {
         const userData = response.data;
-        localStorage.setItem('token', userData.token);
+        localStorage.setItem('token', userData.token); // Ensure the backend returns a token
         setSuccessMessage('Login successful!');
         setSnackbarOpen(true);
         setTimeout(() => navigate('/verify'), 2000);
@@ -56,13 +56,15 @@ function Login() {
         setSnackbarOpen(true);
       }
     } catch (error) {
-      if (error.response && error.response.status === 400) {
-        setErrorMessage('Invalid email or password.');
+      if (error.response) {
+        // Backend returned an error response (e.g., 401 Unauthorized)
+        setErrorMessage(error.response.data || 'Invalid email or password.');
       } else {
+        // Network or other errors
         setErrorMessage('A network error occurred. Please try again later.');
       }
-      console.error('Login error:', error);
       setSnackbarOpen(true);
+      console.error('Login error:', error);
     } finally {
       setIsLoading(false);
     }
@@ -129,8 +131,8 @@ function Login() {
               <TextField
                 label="Password"
                 type="password"
-                name="userPassword"
-                value={formData.userPassword}
+                name="password"
+                value={formData.password}
                 onChange={handleChange}
                 required
                 fullWidth
@@ -147,7 +149,11 @@ function Login() {
                 {isLoading ? 'Logging in...' : 'Login'}
               </Button>
 
-              {errorMessage && <Typography color="error" className="error-message">{errorMessage}</Typography>}
+              {errorMessage && (
+                <Typography color="error" sx={{ mt: 2, textAlign: 'center' }}>
+                  {errorMessage}
+                </Typography>
+              )}
               <br /><br />
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                 <Typography>
